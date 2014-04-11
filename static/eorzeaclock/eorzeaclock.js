@@ -186,7 +186,7 @@ function EarthTime(){
     var curSecond = curTime.getSeconds();
     if(curMinute < 10){curMinute = '0' + curMinute;}
     if(curSecond < 10){curSecond = '0' + curSecond;}
-    return curMonth + '月'  + curDay + '日 ' + curHour + ':' + curMinute + ':' + curSecond + ' （地球）';
+    return {"month": curMonth, "day": curDay, "hour": curHour, "minute": curMinute, "second": curSecond};
 }
 
 // ▼ ------------------------- ▼ levetime - リーヴ受注権（カウントダウン）
@@ -228,7 +228,7 @@ function EorzeaClock(){
     else
         minStr = eorzea["minute"];
 
-    var earthTime = "Earth Time (Asia/Seoul): " + earth;
+    var earthTime = "Earth Time (Asia/Seoul): " + earth["month"] + "月 " + earth["day"] + "日 " + earth["hour"] + ":" + earth["minute"] + ":" + earth["second"];
     var eorzeaTimeText = "Eorzea Time: " + eorzea["year"] + "年 " + monthStr + " " + eorzea["day"] + "日 " + hourStr + ":" + minStr;
     var eorzeaAttribText = "Current Attribute: " + getAttribTextByHour( eorzea["hour"] );
 

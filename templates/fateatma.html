@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Final Fantasy 14: ARR - Atma Myth</title>
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fateatma.css') }}" />
         <script type="text/javascript" src="{{ url_for('static', filename='eorzeaclock/eorzeaclock.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='atma_myth.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='atma_myth01.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='atma_myth02.js') }}"></script>
     </head>
     <body>
         <h1>FFXIV:ARR - Atma Myth</h1>
@@ -18,14 +23,13 @@
         </div>
 
         <hr></hr>
-        <h2>Myth 01</h2>
+        <h2>Myth 01: Eorzea Date/Time and Zodiac Sign</h2>
         <p>This myth is based on following reports
         <ul>
             <li><a href="http://www.reddit.com/r/ffxiv/comments/22hta6/atma_farming_a_theory/">http://www.reddit.com/r/ffxiv/comments/22hta6/atma_farming_a_theory/</a></li>
             <li><a href="http://bbs1.ruliweb.daum.net/gaia/do/ruliweb/family/970/read?articleId=6816667&bbsId=G001&itemId=838&pageIndex=2">http://bbs1.ruliweb.daum.net/gaia/do/ruliweb/family/970/read?articleId=6816667&bbsId=G001&itemId=838&pageIndex=2</a></li> 
         </ul>
         </p>
-
         <div id="atmaMyth01">
             <script type="text/javascript">
                 function AtmaMyth01()
@@ -81,12 +85,48 @@
         </div>
 
         <hr></hr>
-        <p>Created by: pipoket88 (Fuck off, email crawlers)  gmail.com</p>
-        <p>Disclaimer: Myth is myth. Never get too much serious</p>
-        <p>Eorzea clock algorithm and implentation has been taken from following URL<br />
-        <a href="http://www5.plala.or.jp/SQR/ff14/contents/download/eorzeaclock.html">
-            http://www5.plala.or.jp/SQR/ff14/contents/download/eorzeaclock.html
-        </a>
-        </p>
+        <h2>Myth 02: Real world time has something to do with</h2>
+        <p>This myth is based on following reports
+        <ul>
+            <li><a href="http://jp.finalfantasyxiv.com/lodestone/character/5238810/blog/1065414">http://jp.finalfantasyxiv.com/lodestone/character/5238810/blog/1065414</a></li>
+            <li><a href="http://jp.finalfantasyxiv.com/lodestone/character/5360731/blog/1049228/">http://jp.finalfantasyxiv.com/lodestone/character/5360731/blog/1049228/</a></li>
+        </ul>
+
+        <div id="atmaMyth02">
+            <script type="text/javascript">
+                function AtmaMyth02()
+                {
+                    var earthTime = EarthTime();
+                    var areaId = getMyth02AtmaAreaByRealHour( earthTime["hour"] );
+
+                    var myth02Text = "<ul>";
+                    myth02Text += "<li>";
+                    myth02Text += getAtmaAreaNameByIdx( areaId );
+                    myth02Text += "</li>";
+
+                    var output = "";
+                    output += "<p>Area matching with Real Hour: " + myth02Text + "</p>";
+                    document.getElementById('atmaMyth02').innerHTML = output;
+                    setTimeout('AtmaMyth02()',1000);
+                }
+                AtmaMyth02();
+            </script>
+        </div>
+
+        <div class="copyright">
+            <hr></hr>
+            <p>Created by:
+            <ul>
+                <li><a href="http://na.finalfantasyxiv.com/lodestone/character/6350440/">Tsukiko Noraneko @ Tonberry</a></li>
+                <li>pipoket88 (Fuck off, email crawlers)  gmail.com</li>
+            </ul>
+            </p>
+            <p>Disclaimer: Myth is myth. Never get too much serious</p>
+            <p>Eorzea clock algorithm and implentation has been taken from following URL<br />
+            <a href="http://www5.plala.or.jp/SQR/ff14/contents/download/eorzeaclock.html">
+                http://www5.plala.or.jp/SQR/ff14/contents/download/eorzeaclock.html
+            </a>
+            </p>
+        </div>
     </body>
 </html>
