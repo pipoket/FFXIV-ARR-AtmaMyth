@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="{{ url_for('static', filename='eorzeaclock/eorzeaclock.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='atma_myth01.js') }}"></script>
+    </head>
+    <body>
+        <h1>FFXIV:ARR - Atma Myth</h1>
+
+        <hr></hr>
+        <p>Atma killing me. I hope Atma not killing me :(</p>
+        <p>Why bother decorating page for grinding ATMA?! Intended to be used by myself, but might help some other poor player who are getting sick of grinding ATMA.</p>
+
+        <hr></hr>
+        <h2>Eorzea Time - Where it all begins</h2>
+        <div id="eorzeaclock">
+            <script type="text/javascript">EorzeaClock();</script>
+        </div>
+
+        <hr></hr>
+        <h2>Myth 01</h2>
+        <p>This myth is based on following reports
+        <ul>
+            <li><a href="http://www.reddit.com/r/ffxiv/comments/22hta6/atma_farming_a_theory/">http://www.reddit.com/r/ffxiv/comments/22hta6/atma_farming_a_theory/</a></li>
+            <li><a href="http://bbs1.ruliweb.daum.net/gaia/do/ruliweb/family/970/read?articleId=6816667&bbsId=G001&itemId=838&pageIndex=2">http://bbs1.ruliweb.daum.net/gaia/do/ruliweb/family/970/read?articleId=6816667&bbsId=G001&itemId=838&pageIndex=2</a></li> 
+        </ul>
+        </p>
+
+        <div id="atmaMyth01">
+            <script type="text/javascript">
+                function AtmaMyth01()
+                {
+                    var eTime = EorzeaTime();
+                    var atmaMyth01AreaByDate = getAtmaAreaByDate( eTime["month"], eTime["day"] );
+                    var atmaMyth01AreaByHour = getAtmaAreaByHour( eTime["hour"] );
+                    var atmaMyth01AreaByDateAndHour;
+
+                    var atmaMyth01AreaByDateText = "<ul>";
+                    atmaMyth01AreaByDateText += "<li>";
+                    atmaMyth01AreaByDateText += getAtmaAreaNameByIdx( atmaMyth01AreaByDate )
+                    atmaMyth01AreaByDateText += "</li>";
+                    atmaMyth01AreaByDateText += "</ul>";
+
+                    var atmaMyth01AreaByHourText = "<ul>";
+                    for( var i = 0; i < atmaMyth01AreaByHour.length; i++ )
+                    {
+                        atmaMyth01AreaByHourText += "<li>";
+                        atmaMyth01AreaByHourText += getAtmaAreaNameByIdx( atmaMyth01AreaByHour[i] );
+                        atmaMyth01AreaByHourText += "</li>";
+                        if( atmaMyth01AreaByHour[i] == atmaMyth01AreaByDate )
+                        {
+                            atmaMyth01AreaByDateAndHour = atmaMyth01AreaByHour[i];
+                        }
+                    }
+                    atmaMyth01AreaByHourText += "</ul>";
+
+                    var atmaMyth01AreaByDateAndHourText = "<ul>";
+                    if( atmaMyth01AreaByDateAndHour )
+                    {
+                        atmaMyth01AreaByDateAndHourText += "<li>";
+                        atmaMyth01AreaByDateAndHourText += getAtmaAreaNameByIdx( atmaMyth01AreaByDateAndHour );
+                        atmaMyth01AreaByDateAndHourText += "</li>";
+                    }
+                    else
+                    {
+                        atmaMyth01AreaByDateAndHourText += "<li>";
+                        atmaMyth01AreaByDateAndHourText += "No matching area found";
+                        atmaMyth01AreaByDateAndHourText += "</li>";
+                    }
+                    atmaMyth01AreaByDateAndHourText += "</ul>";
+
+                    var output = "";
+                    output += "<p>Area matching with date: " + atmaMyth01AreaByDateText + "</p>";
+                    output += "<p>Area matching with hour(attribute): " + atmaMyth01AreaByHourText + "</p>";
+                    output += "<p>Area matching with BOTH date and time: " + atmaMyth01AreaByDateAndHourText + "</p>";
+                    document.getElementById('atmaMyth01').innerHTML = output;
+                    setTimeout('AtmaMyth01()',1000);
+                }
+                AtmaMyth01();
+            </script>
+        </div>
+
+        <hr></hr>
+        <p>Created by: pipoket88 (Fuck off, email crawlers)  gmail.com</p>
+        <p>Disclaimer: Myth is myth. Never get too much serious</p>
+        <p>Eorzea clock algorithm and implentation has been taken from following URL<br />
+        <a href="http://www5.plala.or.jp/SQR/ff14/contents/download/eorzeaclock.html">
+            http://www5.plala.or.jp/SQR/ff14/contents/download/eorzeaclock.html
+        </a>
+        </p>
+    </body>
+</html>
