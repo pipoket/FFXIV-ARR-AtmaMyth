@@ -87,10 +87,32 @@ function getAtmaAreaByHour( eHour )
         return [3, 4];
     else if( eHour <= 11 )
         return [5, 6];
-    else if( eHour <= 15)
+    else if( eHour <= 15 )
         return [7, 8];
     else if( eHour <= 19 )
         return [9, 10];
     else
         return [11, 12];
+}
+
+
+function getAtmaRemTimeByHour( eHour, eMinute )
+{
+    var retHour;
+    var retMinute;
+    if( eHour <= 3 )
+        retHour = 3 - eHour;
+    else if( eHour <= 7 )
+        retHour = 7 - eHour;
+    else if( eHour <= 11 )
+        retHour = 11 - eHour;
+    else if( eHour <= 15 )
+        retHour = 15 - eHour;
+    else if( eHour <= 19 )
+        retHour = 19 - eHour;
+    else
+        retHour = 23 - eHour;
+    retMinute = 60 - eMinute;
+
+    return {"hour": retHour, "minute": retMinute};
 }

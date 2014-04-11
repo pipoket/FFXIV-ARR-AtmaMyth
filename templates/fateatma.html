@@ -12,7 +12,6 @@
     <body>
         <h1>FFXIV:ARR - Atma Myth</h1>
 
-        <hr></hr>
         <p>Atma killing me. I hope Atma not killing me :(</p>
         <p>Why bother decorating page for grinding ATMA?! Intended to be used by myself, but might help some other poor player who are getting sick of grinding ATMA.</p>
 
@@ -41,9 +40,21 @@
 
                     var atmaMyth01AreaByDateText = "<ul>";
                     atmaMyth01AreaByDateText += "<li>";
-                    atmaMyth01AreaByDateText += getAtmaAreaNameByIdx( atmaMyth01AreaByDate )
+                    atmaMyth01AreaByDateText += getAtmaAreaNameByIdx( atmaMyth01AreaByDate );
                     atmaMyth01AreaByDateText += "</li>";
                     atmaMyth01AreaByDateText += "</ul>";
+
+                    var atmaMyth01AreaByHourRemTime = getAtmaRemTimeByHour( eTime["hour"], eTime["minute"] );
+                    var atmaMyth01AreaByHourRemTimeText = "";
+                    if( atmaMyth01AreaByHourRemTime["hour"] < 10 )
+                        atmaMyth01AreaByHourRemTimeText += "0" + atmaMyth01AreaByHourRemTime["hour"];
+                    else
+                        atmaMyth01AreaByHourRemTimeText += atmaMyth01AreaByHourRemTime["hour"];
+                    atmaMyth01AreaByHourRemTimeText += ":";
+                    if( atmaMyth01AreaByHourRemTime["minute"] < 10 )
+                        atmaMyth01AreaByHourRemTimeText += "0" + atmaMyth01AreaByHourRemTime["minute"];
+                    else
+                        atmaMyth01AreaByHourRemTimeText += atmaMyth01AreaByHourRemTime["minute"];
 
                     var atmaMyth01AreaByHourText = "<ul>";
                     for( var i = 0; i < atmaMyth01AreaByHour.length; i++ )
@@ -75,7 +86,7 @@
 
                     var output = "";
                     output += "<p>Area matching with date: " + atmaMyth01AreaByDateText + "</p>";
-                    output += "<p>Area matching with hour(attribute): " + atmaMyth01AreaByHourText + "</p>";
+                    output += "<p>Area matching with hour(attribute): (Remaining: E.T. " + atmaMyth01AreaByHourRemTimeText + ")" + atmaMyth01AreaByHourText + "</p>";
                     output += "<p>Area matching with BOTH date and time: " + atmaMyth01AreaByDateAndHourText + "</p>";
                     document.getElementById('atmaMyth01').innerHTML = output;
                     setTimeout('AtmaMyth01()',1000);
@@ -105,7 +116,7 @@
                     myth02Text += "</li>";
 
                     var output = "";
-                    output += "<p>Area matching with Real Hour: " + myth02Text + "</p>";
+                    output += "<p>Area matching with Real Hour: (Remaining: L.T. 00:" + (60 - earthTime["minute"]) + ")" + myth02Text + "</p>";
                     document.getElementById('atmaMyth02').innerHTML = output;
                     setTimeout('AtmaMyth02()',1000);
                 }
@@ -122,11 +133,22 @@
             </ul>
             </p>
             <p>Disclaimer: Myth is myth. Never get too much serious</p>
+            <p>Source code for this website can be found <a href="https://github.com/pipoket/FFXIV-ARR-AtmaMyth">here</a></p>
             <p>Eorzea clock algorithm and implentation has been taken from following URL<br />
             <a href="http://www5.plala.or.jp/SQR/ff14/contents/download/eorzeaclock.html">
                 http://www5.plala.or.jp/SQR/ff14/contents/download/eorzeaclock.html
             </a>
             </p>
         </div>
+
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-49931170-1', 'pipoket.info');
+          ga('send', 'pageview');
+        </script>
     </body>
 </html>

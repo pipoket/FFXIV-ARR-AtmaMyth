@@ -228,8 +228,8 @@ function EorzeaClock(){
     else
         minStr = eorzea["minute"];
 
-    var earthTime = "Earth Time (Asia/Seoul): " + earth["month"] + "月 " + earth["day"] + "日 " + earth["hour"] + ":" + earth["minute"] + ":" + earth["second"];
-    var eorzeaTimeText = "Eorzea Time: " + eorzea["year"] + "年 " + monthStr + " " + eorzea["day"] + "日 " + hourStr + ":" + minStr;
+    var earthTime = "L.T. (Local Time@Asia/Seoul): " + earth["month"] + "月 " + earth["day"] + "日 " + earth["hour"] + ":" + earth["minute"] + ":" + earth["second"];
+    var eorzeaTimeText = "E.T. (Eorzea Time): " + eorzea["year"] + "年 " + monthStr + " " + eorzea["day"] + "日 " + hourStr + ":" + minStr;
     var eorzeaAttribText = "Current Attribute: " + getAttribTextByHour( eorzea["hour"] );
 
     document.getElementById('eorzeaclock').innerHTML = earthTime + "<br />" + eorzeaTimeText + "<br />" + eorzeaAttribText;
