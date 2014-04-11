@@ -3,7 +3,7 @@
 // ▼ ------------------------- ▼ eorzeatime3 - エオルゼア時間（月属性/日属性/時属性）
 
 function EorzeaTime(){
-    var ratioRealToGame = (1440 / 69.99999);
+    var ratioRealToGame = (1440 / 69.99999701);
     //var ratioRealToGame = (1440 / 70);
     var curTime = new Date();
     var arr = DstDetect();
